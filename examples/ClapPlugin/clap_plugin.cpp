@@ -72,20 +72,29 @@ bool ClapPlugin::guiCreate(const char* api, bool is_floating) noexcept {
     return true;
 
   app_ = std::make_unique<visage::ApplicationWindow>();
-  app_->setWindowDimensions(80_vmin, 60_vmin);
 
   app_->onDraw() = [this](visage::Canvas& canvas) {
-    canvas.setColor(0xff000066);
+    canvas.setColor(0xff000000);
     canvas.fill(0, 0, app_->width(), app_->height());
-
-    float circle_radius = app_->height() * 0.1f;
-    float x = app_->width() * 0.5f - circle_radius;
-    float y = app_->height() * 0.5f - circle_radius;
-    canvas.setColor(0xff00ffff);
-    canvas.circle(x, y, 2.0f * circle_radius);
   };
 
-  app_->onWindowContentsResized() = [this] { _host.guiRequestResize(pluginWidth(), pluginHeight()); };
+  app_->onWindowContentsResized() = [this] {
+    _host.guiRequestResize(pluginWidth(), pluginHeight());
+  };
+
+  app_->onResize() = [this] {
+    for (auto* child : app_->children())
+      child->setBounds(app_->localBounds());
+   };
+
+  auto frame = std::make_unique<visage::Frame>();
+  frame->onDraw() = [f = frame.get()](visage::Canvas& c) {
+    c.setColor(0xff00ff00);
+    c.fill(0, 0, f->width(), f->height());
+  };
+
+  app_->addChild(std::move(frame));
+  app_->setWindowDimensions(80_vmin, 60_vmin);
 
   return true;
 }
