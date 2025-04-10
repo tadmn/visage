@@ -18,7 +18,7 @@ amalgamate_headers(${VISAGE_INCLUDE}/visage/utils.h "${HEADERS}")
 list(APPEND HEADERS ${VISAGE_INCLUDE}/visage/utils.h)
 
 add_library(VisageUtils OBJECT ${SOURCE_FILES} ${HEADERS})
-target_include_directories(VisageUtils PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(VisageUtils PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${VISAGE_INCLUDE_PATH})
 add_library(VisageUtilsDefinitions INTERFACE)
 set_target_properties(VisageUtils PROPERTIES FOLDER "visage")
 
