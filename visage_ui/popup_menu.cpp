@@ -25,17 +25,17 @@
 #include "visage_graphics/theme.h"
 
 namespace visage {
-  VISAGE_THEME_COLOR(PopupMenuBackground, 0xff262a2e);
-  VISAGE_THEME_COLOR(PopupMenuBorder, 0xff606265);
+  VISAGE_THEME_COLOR(PopupMenuBackground, 0xff282828);
+  VISAGE_THEME_COLOR(PopupMenuBorder, 0xff454545);
   VISAGE_THEME_COLOR(PopupMenuText, 0xffeeeeee);
   VISAGE_THEME_COLOR(PopupMenuDisabledText, 0xff888888);
-  VISAGE_THEME_COLOR(PopupMenuSelection, 0xffaa88ff);
+  VISAGE_THEME_COLOR(PopupMenuSelection, 0xff277DCE);
   VISAGE_THEME_COLOR(PopupMenuSelectionText, 0xffffffff);
 
   VISAGE_THEME_VALUE(PopupOptionHeight, 22.0f);
-  VISAGE_THEME_VALUE(PopupMinWidth, 175.0f);
+  VISAGE_THEME_VALUE(PopupMinWidth, 160.0f);
   VISAGE_THEME_VALUE(PopupTextPadding, 9.0f);
-  VISAGE_THEME_VALUE(PopupFontSize, 14.0f);
+  VISAGE_THEME_VALUE(PopupFontSize, 13.0f);
   VISAGE_THEME_VALUE(PopupSelectionPadding, 4.0f);
 
   void PopupMenu::show(Frame* source, Point position) {
